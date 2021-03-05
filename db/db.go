@@ -21,6 +21,7 @@ func init() {
 	URI := "mongodb://juancsr:juancsr@localhost:27016/"
 	clientOptions := options.Client().ApplyURI(URI)
 	client, err = mongo.Connect(CTX, clientOptions)
+
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -38,7 +39,9 @@ func GetCollection(collectionName string) *mongo.Collection {
 
 // CloseConnection cierra la conexión con la BD
 func CloseConnection() {
-	if err := client.Disconnect(CTX); err != nil {
-		panic(err)
-	}
+	defer func() {
+		if err := client.Disconnect(CTX); err != nil {
+			panic(err)
+		}
+	}()
 }
