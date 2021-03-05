@@ -16,7 +16,10 @@ func main() {
 		Telefono:           "941234567",
 		PrefijoNumTelefono: "+57",
 	}
-	models.RegistrarCotizacion(&cotizacion)
+	err := models.RegistrarCotizacion(&cotizacion)
+	if err != nil {
+		log.Fatal("error: ", err)
+	}
 }
 
 func pruebas() {

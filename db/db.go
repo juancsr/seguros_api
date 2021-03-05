@@ -32,6 +32,13 @@ func init() {
 
 //GetCollection cliente de db
 func GetCollection(collectionName string) *mongo.Collection {
-	collection := client.Database("test").Collection(collectionName)
+	collection := client.Database("seguros").Collection(collectionName)
 	return collection
+}
+
+// CloseConnection cierra la conexión con la BD
+func CloseConnection() {
+	if err := client.Disconnect(CTX); err != nil {
+		panic(err)
+	}
 }

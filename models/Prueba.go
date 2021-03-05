@@ -19,6 +19,7 @@ var collectionName = "prueba"
 //GetAllPruebas obtener todas las pruebas
 func GetAllPruebas() ([]*Prueba, error) {
 	filter := bson.D{{}}
+	defer db.CloseConnection()
 	return filterPruebas(filter)
 }
 
