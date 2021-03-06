@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "53f9d123-a4ca-4c47-8769-c4465d775492",
+		"name": "Prueba tecnica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "cotizar_plan_seguro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"rut\": \"1234-5\",\n    \"fecha_nacimiento\": \"2021-03-05T18:34:53.915Z\",\n    \"correo_electronico\": \"jcamilosarmientor@gmail.com\",\n    \"telefono\": \"456234\",\n    \"prefijo_num_telefono\": \"+56\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/cotizar_plan_seguros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cotizar_plan_seguros"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
