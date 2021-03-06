@@ -1,8 +1,10 @@
 # Seguritos API
 API de seguros
 
-## How to run it?
+## How to run it?
 You only need Docker and Docker-compose on your computer.
+
+Go to a terminal and then:
 
 *Clone de the repo*
 ```
