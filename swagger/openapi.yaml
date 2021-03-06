@@ -1,0 +1,156 @@
+openapi: 3.0.0
+servers:
+  - description: Segurito API
+    url: https://virtserver.swaggerhub.com/juancsr/falabella_chile/1.0.0
+info:
+  description: This is a simple API
+  version: "1.0.0"
+  title: Segurito API
+  contact:
+    email: jcamilosarmientor@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: developers
+    description: Operations available to regular developers
+paths:
+  /cotizar_plan_seguros:
+    post:
+      tags:
+        - seguros
+      summary: lista de seguros
+      operationId: cotirzarPlanSeguro
+      description: Registra la información y una cotización y retorna una lista de seguros
+      responses:
+        '200':
+          description: planes de seguro
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PlanSeguro'
+        
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cotizacion'
+        description: Información de la cotización
+components:
+  schemas:
+    Cotizacion:
+      type: object
+      required:
+        - rut
+        - fechaNacimiento
+        - correoElectronico
+        - telefono
+        - prefijoNumTelefono
+      properties:
+        _id:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+
+        rut:
+          type: string
+          example: 12.345.678-9
+          
+        fechaNacimiento:
+          type: string
+          format: date-time
+          example: '2016-08-29T09:12:33.001Z'
+        telefono: 
+          type: string
+          example: 941234567
+        prefijo_num_telefono:
+          type: string
+          example: +56
+        cotizado:
+          type: boolean
+          
+    PlanSeguro:
+      properties:
+        _id:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        nombre:
+          type: string
+          example: Seguros MetLife
+        aseguradora:
+          $ref: '#/components/schemas/Aseguradora'
+        monto_pesos:
+          type: number
+          example: 117000.0
+        capital_asegurado:
+          type: number
+          example: 500
+        promocion:
+          $ref: '#/components/schemas/Promocion'
+        monto_uf:
+          type: number
+          example: 0.4
+
+    Promocion:
+      properties:
+        nombre:
+          type: string
+          example: Promoción 1
+        codigo:
+          type: string
+          example: PROM
+        mes_couta_gratis:
+          type: array
+          example: [1,2]
+        descripcion:
+          type: string
+          example: 2 meses gratis 
+
+    Aseguradora:
+      properties:
+        nombre:
+          type: string
+          example: "MetLife"
+        contacto:
+          type: string
+          example: metlife@metlife.cl
+        ciudad:
+          type: string
+          example: Santiago
+        pais:
+          type: string
+          example: Chile
+      
+    MindicadorCL:
+      properties:
+        version:
+          type: string
+          example: 1.6.0
+        autor:
+          type: string
+          format: url
+          example: mindicadorcl
+        codigo:
+          type: string
+          example: uf
+        unidad_medida:
+          type: string
+          example: Pesos
+        serie:
+          type: array
+          items:
+            $ref: '#/components/schemas/Promocion'
+      type: object
+
+    MindicadorCLSerie:
+      properties:
+        fecha:
+          type: string
+          format: date-time
+          example: '2016-08-29T09:12:33.001Z'
+        valor:
+          type: number
+          example: 29323.89

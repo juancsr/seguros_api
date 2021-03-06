@@ -2,11 +2,15 @@ package models
 
 import "time"
 
+// MindicadorCLSerie atributo respuesta del api de minindicador
+// swagger:model MindicadorCLSerie
 type MindicadorCLSerie struct {
 	Fecha time.Time `json:"fecha"`
 	Valor float64   `json:"valor"`
 }
 
+// MindicadorCL respuesta del api de minindicador
+// swagger:model MindicadorCL
 type MindicadorCL struct {
 	Version      string              `json:"version"`
 	Autor        string              `json:"autor"`

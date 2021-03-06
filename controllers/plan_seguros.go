@@ -10,6 +10,16 @@ import (
 )
 
 // Cotizar recibe la información de una cotización y retorna una lista de planes de seguro
+// swagger:operation GET /cotizar_plan_seguros users
+// cotizar un plan de seguros
+// ---
+// produces:
+// - application/json
+// parameters:
+// - name: string
+// responses:
+//   '200':
+//     description: []Planes
 func Cotizar(w http.ResponseWriter, r *http.Request) {
 	var cotizacion models.Cotizacion
 	reqBody, _ := ioutil.ReadAll(r.Body)

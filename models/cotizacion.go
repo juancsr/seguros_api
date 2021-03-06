@@ -8,6 +8,7 @@ import (
 )
 
 //Cotizacion representa una colección de mongodb
+// swagger:model Cotizacion
 type Cotizacion struct {
 	ID                 primitive.ObjectID `bson:"_id" json:"id" binding:"required"`
 	Rut                string             `bson:"rut,omitempty" json:"rut" binding:"required"`

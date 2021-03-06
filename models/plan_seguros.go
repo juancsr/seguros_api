@@ -8,7 +8,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-//Aseguradora atributo de la colección Aseguradora
+// Aseguradora atributo de la colección Aseguradora
+// swagger:model Aseguradora
 type Aseguradora struct {
 	Nombre   string `bson:"nombre" json:"nombre"`
 	Contacto string `bson:"contacto" json:"contacto"`
@@ -16,7 +17,8 @@ type Aseguradora struct {
 	Pais     string `bson:"pais" pais:"pais"`
 }
 
-//Promocion atributo de la colección PlanSeguro
+// Promocion atributo de la colección PlanSeguro
+// swagger:model Promocion
 type Promocion struct {
 	Nombre          string `bson:"nombre" json:"nombre"`
 	Codigo          string `bson:"codigo" json:"codigo"`
@@ -24,7 +26,8 @@ type Promocion struct {
 	Descripcion     string `bson:"descripcion" json:"desripcion"`
 }
 
-//PlanSeguro representa una colección de mongodb
+// PlanSeguro representa una colección de mongodb
+// swagger:model PlanSeguro
 type PlanSeguro struct {
 	ID               primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	Nombre           string             `bson:"nombre" json:"nombre"`

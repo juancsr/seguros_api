@@ -1,3 +1,19 @@
+// Seguros API REST
+//
+// Seguros API REST Prueba Falabella Chile
+//
+//     Schemes: http, https
+//     Host: localhost:3000
+//     Version: 1.0
+//     basePath: /
+//
+//     Consumes:
+//     - application/json
+//
+//     Produces:
+//     - application/json
+//
+// swagger:meta
 package main
 
 import (
