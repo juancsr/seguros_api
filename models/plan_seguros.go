@@ -21,6 +21,7 @@ type Promocion struct {
 	Nombre          string `bson:"nombre" json:"nombre"`
 	Codigo          string `bson:"codigo" json:"codigo"`
 	MesCuotasGratis []int8 `bson:"mes_cuota_gratis" json:"mes_cuota_gratis"`
+	Descripcion     string `bson:"descripcion" json:"desripcion"`
 }
 
 //PlanSeguro representa una colección de mongodb
@@ -39,7 +40,7 @@ const plansegurosCollectionName = "plan_seguro"
 //GetAllPlanSeguros obtener todas las planesSeguro
 func GetAllPlanSeguros() ([]*PlanSeguro, error) {
 	filter := bson.D{{}}
-	defer db.CloseConnection()
+	// defer db.CloseConnection()
 	return filterPlanSeguros(filter)
 }
 
@@ -75,4 +76,13 @@ func filterPlanSeguros(filter interface{}) ([]*PlanSeguro, error) {
 	}
 
 	return planesSeguro, nil
+}
+
+//RegistrarPlanSeguro registra planes de seguro en la bd
+func RegistrarPlanSeguro(planSeguro *PlanSeguro) error {
+	ctx := db.CTX
+	collection := db.GetCollection(plansegurosCollectionName)
+	planSeguro.ID = primitive.NewObjectID()
+	_, err := collection.InsertOne(ctx, planSeguro)
+	return err
 }
