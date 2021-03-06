@@ -18,7 +18,7 @@ var client *mongo.Client
 // init connection
 func init() {
 	var err error
-	URI := "mongodb://juancsr:juancsr@localhost:27016/"
+	URI := "mongodb://juancsr:juancsr@seguros_mongo_db:27017/"
 	clientOptions := options.Client().ApplyURI(URI)
 	client, err = mongo.Connect(CTX, clientOptions)
 

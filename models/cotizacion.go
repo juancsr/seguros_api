@@ -9,8 +9,8 @@ import (
 
 //Cotizacion representa una colección de mongodb
 type Cotizacion struct {
-	ID                 primitive.ObjectID `bson:"_id" json:"id"`
-	Rut                string             `bson:"rut" json:"rut"`
+	ID                 primitive.ObjectID `bson:"_id" json:"id" binding:"required"`
+	Rut                string             `bson:"rut,omitempty" json:"rut" binding:"required"`
 	FechaNacimiento    time.Time          `bson:"fechaNacimiento" json:"fecha_nacimiento"`
 	CorreoElectronico  string             `bson:"correoElectronico" json:"correo_electronico"`
 	Telefono           string             `bson:"telefono" json:"telefono"`
@@ -27,6 +27,5 @@ func RegistrarCotizacion(cotizacion *Cotizacion) error {
 	cotizacion.ID = primitive.NewObjectID()
 	cotizacion.cotizado = false
 	_, err := collection.InsertOne(ctx, cotizacion)
-	//defer db.CloseConnection()
 	return err
 }
