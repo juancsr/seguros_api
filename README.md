@@ -16,3 +16,7 @@ $ git clone https://github.com/juancsr/seguros_api
 $ cd seguros_api
 $ docker-compose up --build
 ```
+
+## Openapi on Swaggerhub
+
+You can see the Openapi documentation on: https://app.swaggerhub.com/apis/juancsr/falabella_chile/1.0.0
